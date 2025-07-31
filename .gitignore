@@ -1,0 +1,47 @@
+# === Python ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+ENV/
+.idea
+
+# Django database
+*.sqlite3
+db.sqlite3
+
+# Environment variables
+.env
+
+# Django collected static files
+staticfiles/
+media/
+
+# === Tailwind CSS (via django-tailwind) ===
+node_modules/
+tailwind.config.js
+postcss.config.js
+theme/static_src/**/dist/
+theme/static_src/**/node_modules/
+
+# === Editor/IDE ===
+.vscode/
+.idea/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Test cache
+.pytest_cache/
+htmlcov/
+coverage.xml
+*.cover
+*.py,cover
