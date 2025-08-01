@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>New Application Received</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f9fafb; margin:0; padding:0;">
+  <div style="max-width:600px; margin:40px auto; background-color:#ffffff; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1); padding:30px;">
+    
+    <h1 style="font-weight:700; font-size:28px; color:#3b82f6; margin:0 0 20px 0;">
+      🚀 New Application on: {{ job.title }}
+    </h1>
+
+    <h3 style="font-size:20px; color:#111827; margin:0 0 20px 0;">
+      Hi {{ faculty.first_name }},
+    </h3>
+
+    <p style="font-size:16px; color:#111827; margin:0 0 10px 0;">
+      <strong>Applicant:</strong> {{ applicant.first_name }} {{ applicant.last_name }}
+    </p>
+
+    <p style="font-size:16px; color:#111827; margin:0 0 10px 0;">
+      <strong>Company:</strong> {{ job.companyName }}
+    </p>
+
+    <p style="font-size:16px; color:#111827; margin:0 0 10px 0;">
+      <strong>Position:</strong> {{ job.position }}
+    </p>
+
+    <p style="font-size:16px; color:#374151; margin:20px 0;">
+      {{ job.description|linebreaks }}
+    </p>
+
+    <table role="presentation" cellspacing="0" cellpadding="0">
+      <tr>
+        <td bgcolor="#3b82f6" style="border-radius:6px;">
+          <a href="{{ application_url }}" target="_blank" 
+             style="display:inline-block; padding:12px 24px; font-size:16px; color:#ffffff; text-decoration:none; font-weight:bold;">
+            View Application
+          </a>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+</body>
+</html>
