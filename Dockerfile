@@ -27,12 +27,12 @@ RUN pip install -r requirements.txt
 # Copy project files
 COPY . .
 
-# Build Tailwind CSS (you must have a working django-tailwind setup)
-RUN python manage.py tailwind install
-RUN python manage.py tailwind build
+# # Build Tailwind CSS (you must have a working django-tailwind setup)
+# RUN python manage.py tailwind install
+# RUN python manage.py tailwind build
 
-# Collect static files (for production)
-RUN python manage.py collectstatic --noinput
+# # Collect static files (for production)
+# RUN python manage.py collectstatic --noinput
 
 # Expose port (change if needed)
 EXPOSE 8000

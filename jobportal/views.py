@@ -181,7 +181,7 @@ def apply_job(request, job_id):
     job = get_object_or_404(CreateJob, id=job_id)
 
     # Check if the application deadline has passed
-    if job.deadline < today:
+    if job.applicationDeadline < today:
         messages.error(request, "Sorry, the application deadline for this job has passed.")
         return redirect('job_list')
 

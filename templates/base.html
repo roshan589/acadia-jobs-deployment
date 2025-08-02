@@ -105,7 +105,7 @@
     const button = document.getElementById('user-menu-button');
     const dropdown = document.getElementById('user-menu-dropdown');
 
-    button.addEventListener('', (e) => {
+    button.addEventListener('click', (e) => {
       e.stopPropagation();
       dropdown.classList.toggle('hidden');
     });
