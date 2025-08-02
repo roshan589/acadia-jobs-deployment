@@ -7,6 +7,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Acadia Jobs</title>
+
   <link rel="icon" href="{% static 'assets/logo.ico'%}">
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
   {% tailwind_css %}
@@ -100,7 +101,6 @@
       © {{ year|default:2025 }} Job Portal. All rights reserved.
     </div>
   </footer>
-
   <script>
     const button = document.getElementById('user-menu-button');
     const dropdown = document.getElementById('user-menu-dropdown');
@@ -115,7 +115,5 @@
       dropdown.classList.add('hidden');
     });
   </script>
-
-
 </body>
 </html>

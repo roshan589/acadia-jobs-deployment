@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-olet-hmcx109fqco^c1y^uan7$p9!_c+z72_!p8eqw&di^lmar
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+DOMAIN = "148.230.87.177"
 
 
 # Application definition
@@ -46,8 +47,8 @@ INSTALLED_APPS = [
 ]
 
 TAILWIND_APP_NAME = 'theme'
-NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
-# NPM_BIN_PATH = "/usr/local/bin/npm"
+# NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+NPM_BIN_PATH = "/usr/local/bin/npm"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -131,7 +132,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = "/home/roshab/acadia-jobs-deployment/staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -140,8 +141,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.CustomUser'
 
 
-LOGIN_URL = '/accounts/login'
-LOGOUT_URL = '/accounts/logout'
+LOGIN_URL = 'users/accounts/login'
+LOGOUT_URL = 'users/accounts/logout'
 LOGIN_REDIRECT_URL = '/dashboard'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # settings.py
