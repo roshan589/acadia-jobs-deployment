@@ -20,13 +20,7 @@ db.sqlite3
 # Django collected static files
 staticfiles/
 media/
-
-# === Tailwind CSS (via django-tailwind) ===
-node_modules/
-tailwind.config.js
-postcss.config.js
-theme/static_src/**/dist/
-theme/static_src/**/node_modules/
+theme/
 
 # === Editor/IDE ===
 .vscode/
@@ -38,7 +32,7 @@ Thumbs.db
 
 # Logs
 *.log
-
+settings.py
 # Test cache
 .pytest_cache/
 htmlcov/

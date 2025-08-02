@@ -49,7 +49,7 @@ class ApplyJob(models.Model):
     state = models.CharField(max_length=100)
     phone_no = models.CharField(max_length=12)
     user = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE)
-    resume = models.FileField(upload_to="resumes/")
+    resume = models.FileField(upload_to="media/resumes/")
     availability_start_date = models.DateField()
     availability_end_date = models.DateField()
     applied_on = models.DateTimeField(auto_now_add=True)
