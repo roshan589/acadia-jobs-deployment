@@ -46,6 +46,7 @@ def student_required(view_func):
         return HttpResponseForbidden("You do not have permission to access this page.")
     return wrapper
 
+# Decorator to ensure only users with user_type 'faculty' and 'parent' can access the view
 def faculty_parent_required(view_func):
     @wraps(view_func)
     def wrapper(request, *args, **kwargs):

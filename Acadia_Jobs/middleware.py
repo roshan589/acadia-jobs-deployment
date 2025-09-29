@@ -3,6 +3,8 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from django.utils.deprecation import MiddlewareMixin
 
+# This file checks the validity of the parent account.
+
 class CheckParentExpiryMiddleware(MiddlewareMixin):
     def process_request(self, request):
         if request.user.is_authenticated:

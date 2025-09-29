@@ -7,6 +7,7 @@ from django.conf import settings
 from jobportal.models import CreateJob, ApplyJob
 from users.models import CustomUser
 
+# This function will send the mail once we post the job applications
 @receiver(post_save, sender=CreateJob)
 def send_job_email(sender, instance, created, **kwargs):
     if created:
@@ -37,6 +38,7 @@ def send_job_email(sender, instance, created, **kwargs):
             msg.attach_alternative(html_content, "text/html")
             msg.send()
 
+# Used to send email once someone apply the job.
 @receiver(post_save, sender=ApplyJob)
 def send_apply_email(sender, instance, created, **kwargs):
     if created:
@@ -74,6 +76,7 @@ def cache_old_status(sender, instance, **kwargs):
         old_instance = ApplyJob.objects.get(pk=instance.pk)
         instance._old_job_status = old_instance.job_status
 
+# This will notify the student if hiring status is changed.
 @receiver(post_save, sender=ApplyJob)
 def notify_applicant_status_change(sender, instance, created, **kwargs):
     if created:

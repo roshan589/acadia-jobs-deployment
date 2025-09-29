@@ -18,8 +18,8 @@ from django.contrib import admin
 from django.urls import path,include
 from. import views
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path("",views.home,name="home"),
-    path("users/", include("users.urls")),
-    path("",include("jobportal.urls")),
+    path('admin/', admin.site.urls), # admin page
+    path("",views.home,name="home"), 
+    path("users/", include("users.urls")), # manages all the urls related to users
+    path("",include("jobportal.urls")), # manages all the urls for app.
 ]
