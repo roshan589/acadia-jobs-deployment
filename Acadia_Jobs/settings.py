@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 
 TAILWIND_APP_NAME = 'theme'
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
-# NPM_BIN_PATH = "/usr/local/bin/npm"
+# NPM_BIN_PATH = "/usr/bin/npm"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -132,7 +132,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-STATIC_ROOT = "/home/roshab/acadia-jobs-deployment/staticfiles"
+STATIC_ROOT = BASE_DIR/ "staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
