@@ -10,7 +10,7 @@ services:
     volumes:
       - ./static:/app/static          # source static files (STATICFILES_DIRS)
       - ./staticfiles:/app/staticfiles  # collected static files (STATIC_ROOT)
-      - ./media: /app/media
+      - ./media:/app/media
       - .:/app
     env_file:
       - .env
