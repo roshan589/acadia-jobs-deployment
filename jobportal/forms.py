@@ -29,7 +29,11 @@ class JobApplyForm(forms.ModelForm):
         model = ApplyJob
         fields = ['first_name', 'last_name', 'email','address','city','state', 'phone_no', 'availability_start_date', 'availability_end_date', 'resume']
         resume = forms.FileField(required=True)
-
+    def clean_file(self):
+        file = self.cleaned_data.get('file', False)
+        if file and file.size > 5 * 1024 * 1024:
+            raise forms.ValidationError("File too large ( > 5MB )")
+        return file
 
 class StatusUpdateForm(forms.ModelForm):
     class Meta:
