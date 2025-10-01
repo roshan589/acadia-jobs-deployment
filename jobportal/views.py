@@ -194,10 +194,6 @@ def apply_job(request, job_id):
     if request.method == "POST":
         form = JobApplyForm(request.POST, request.FILES)
         if form.is_valid():
-            uploaded_file = request.FILES.get("resume")  # change "resume" to your field name
-            if uploaded_file and uploaded_file.size > 5 * 1024 * 1024:
-                messages.error(request, "File too large. Maximum size is 5 MB.")
-                return render(request, "jobapplication.html", {'form': form, 'job': job})
             application = form.save(commit=False)
             application.job = job
             application.user = request.user
