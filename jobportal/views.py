@@ -57,7 +57,7 @@ def faculty_parent_required(view_func):
         return HttpResponseForbidden("You do not have permission to access this page.")
     return wrapper
 
-@login_required(login_url="/accounts/login")
+@login_required(login_url="/users/accounts/login")
 @faculty_required
 def create_parent_account(request):
     if request.method == "POST":
@@ -99,7 +99,7 @@ def home(request):
 
 
 # Test page view, shows dashboard based on user role
-@login_required(login_url='/accounts/login')
+@login_required(login_url='/users/accounts/login')
 def test(request): 
     job_posts = CreateJob.objects.all()
     form = JobFilterForm(request.POST)
@@ -128,7 +128,7 @@ def test(request):
 
 
 
-@login_required(login_url='/accounts/login')
+@login_required(login_url='/users/accounts/login')
 def job_search(request):
     job_posts = CreateJob.objects.none()  # Don't load all initially
     form = JobFilterForm(request.GET)
@@ -152,7 +152,7 @@ def job_search(request):
 
 
 # View to list all jobs (available to all logged-in users)
-@login_required(login_url="/accounts/login")
+@login_required(login_url="/users/accounts/login")
 def jobList(request):
     
     job_posts = CreateJob.objects.filter(applicationDeadline__gte=today)
@@ -176,7 +176,7 @@ def jobDetail(request, job_id):
     return render(request, 'jobDetail.html', {'job': job})
 
 # Student-only view to apply for a job
-@login_required(login_url="/accounts/login")
+@login_required(login_url="/users/accounts/login")
 @student_required
 def apply_job(request, job_id):
     job = get_object_or_404(CreateJob, id=job_id)
@@ -210,7 +210,7 @@ def apply_job(request, job_id):
 
     return render(request, "jobapplication.html", {'form': form, 'job': job})
 
-@login_required(login_url="/accounts/login")
+@login_required(login_url="/users/accounts/login")
 @student_required
 def jobApplicationStatus(request):
     # Get the current logged-in student
@@ -225,7 +225,7 @@ def jobApplicationStatus(request):
 
 
 # Faculty-only view to create/post a new job
-@login_required(login_url="/accounts/login")
+@login_required(login_url="/users/accounts/login")
 @faculty_parent_required
 def post_job(request):
     if request.method == "POST":
@@ -242,7 +242,7 @@ def post_job(request):
     return render(request, "createJob.html", {'form': form})
 
 
-@login_required(login_url="/accounts/login")
+@login_required(login_url="/users/accounts/login")
 @faculty_parent_required
 def editJob(request, job_id):
     job = get_object_or_404(CreateJob, id=job_id, posted_by=request.user)
@@ -261,7 +261,7 @@ def editJob(request, job_id):
 
 
 # Faculty-only view to see applications submitted for their posted jobs
-@login_required(login_url="/accounts/login")
+@login_required(login_url="/users/accounts/login")
 @faculty_parent_required
 def jobApplicationDBFaculty(request, job_id):
     print(request.user.user_type)  # Debug print (can be removed in production)
@@ -271,14 +271,14 @@ def jobApplicationDBFaculty(request, job_id):
 
 
 # Faculty-only view to see list of jobs posted by themselves
-@login_required(login_url="/accounts/login")
+@login_required(login_url="/users/accounts/login")
 @faculty_parent_required
 def facultyJobList(request):
     jobs = CreateJob.objects.filter(posted_by=request.user)
     return render(request, "facultyJobList.html", {'jobs': jobs})
 
 
-@login_required(login_url="/accounts/login")
+@login_required(login_url="/users/accounts/login")
 @faculty_parent_required
 def updateApplicationStatus(request, application_id):
     application = get_object_or_404(ApplyJob, id=application_id)
@@ -292,14 +292,14 @@ def updateApplicationStatus(request, application_id):
     return render(request, 'updateStatus.html', {'form': form, 'application': application})
 
 
-@login_required(login_url="/accounts/login")
+@login_required(login_url="/users/accounts/login")
 @faculty_parent_required
 def deleteJobList(request):
     jobs = CreateJob.objects.filter(posted_by=request.user)
     return render(request, 'deleteJobList.html', {'jobs': jobs})
 
 
-@login_required(login_url="/accounts/login")
+@login_required(login_url="/users/accounts/login")
 @faculty_parent_required
 def deleteJobPost(request, job_id):
     job = get_object_or_404(CreateJob, id=job_id)
@@ -309,7 +309,7 @@ def deleteJobPost(request, job_id):
     return render(request, 'deleteJobDetail.html',{'job': job})
 
 
-@login_required(login_url="/accounts/login")
+@login_required(login_url="/users/accounts/login")
 def edit_profile(request):
     if request.method == 'POST':
         form = ProfileUpdateForm(request.POST, instance=request.user)
