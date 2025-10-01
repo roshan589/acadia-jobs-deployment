@@ -1,5 +1,13 @@
 from django.db import models
+from django.core.exceptions import ValidationError
+
 # Model to post the job.
+
+def validate_file_size(value):
+    limit = 5 * 1024 * 1024  # 5 MB
+    if value.size > limit:
+        raise ValidationError('File too large. Size should not exceed 5 MB.')
+
 class CreateJob(models.Model):
     JOB_TYPE = (
         ("full-time", "Full Time"),
@@ -39,6 +47,7 @@ class ApplyJob(models.Model):
         (ACCEPTED, 'Accepted'),
         (REJECTED, 'Rejected'),
     )
+
     job = models.ForeignKey(CreateJob, on_delete=models.CASCADE, related_name='applications')
     first_name = models.CharField(max_length=100)
     middle_name = models.CharField(max_length=100)
@@ -49,7 +58,7 @@ class ApplyJob(models.Model):
     state = models.CharField(max_length=100)
     phone_no = models.CharField(max_length=12)
     user = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE)
-    resume = models.FileField(upload_to="media/resumes/")
+    resume = models.FileField(upload_to="media/resumes/", validators=[validate_file_size])
     availability_start_date = models.DateField()
     availability_end_date = models.DateField()
     applied_on = models.DateTimeField(auto_now_add=True)
