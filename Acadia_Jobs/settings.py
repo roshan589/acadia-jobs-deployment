@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["51.161.8.247"]
+ALLOWED_HOSTS = ["51.161.8.247", "localhost"]
 DOMAIN = "51.161.8.247"
 
 
